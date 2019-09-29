@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "doc-cli"
+version = "0.0.1"
+license = "Apache-2.0"
+packages = [
+    {include = "doccli"}
+]
+description = "Build Config classes that can be quickly turned into CLI specifications"
+authors = ["mayansalama <micsalama@gmail.com>"]
+readme = "README.md"
+homepage = "https://github.com/mayansalama/doc-cli"
+repository = "https://github.com/mayansalama/doccli"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+decli = "^0.5.1"
+docstring-parser = "^0.3"
+
+[tool.poetry.dev-dependencies]
+black = {version = "^19.3b0", allows-prereleases = true}
+pytest = "5.0.1"
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
