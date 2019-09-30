@@ -7,7 +7,7 @@ Usage:
 python webserver_conf.py --help
 python webserver_conf.py --port 8000 --hostname localhost 
 python webserver_conf.py --port 8000 --hostname localhost --save-cfg True
-
+python webserver_conf.py
 """
 import os
 from doccli import DocCliParser, ConfigUtil
@@ -41,6 +41,9 @@ def run_webserver(cfg: Webserver):
 
 
 parser = DocCliParser(Webserver)
-args = parser.parse_args_with_config_file(cfg_file)
+if not os.path.exists(cfg_file):
+    args = parser.parse_args()
+else:
+    args = parser.parse_args_with_config_file(cfg_file)
 cfg = Webserver(**vars(args))
 run_webserver(cfg)
