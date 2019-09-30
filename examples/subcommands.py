@@ -3,14 +3,14 @@ python subcommands.py --help
 python subcommands.py print-args --param-a h --param-b 2
 """
 
-from doccli import DocliParser
+from doccli import DocCliParser
 
 
 class PrintArgs:
-    def __init__(self, _non_cli_param: str, param_a: str, param_b, param_c: int = 5):
-        """print-args
+    command_name = "print-args"
 
-        Will print the provided params
+    def __init__(self, _non_cli_param: str, param_a: str, param_b, param_c: int = 5):
+        """Will print the provided params
         
         Args:
             _non_cli_param (str): Underscore leading params aren't included in the
@@ -27,13 +27,13 @@ class PrintArgs:
 
 
 class SuperTool:
-    """main-tool
-
-    Main CLI class to route to subcommands
+    """Main CLI class to route to subcommands
     """
+    
+    command_name = "main-tool"
 
 
-docliparser = DocliParser(SuperTool)
+docliparser = DocCliParser(SuperTool)
 docliparser.add_subcommand(PrintArgs, func=lambda **kwargs: print(kwargs))
 
 args = docliparser.parser.parse_args()

@@ -1,1 +1,2 @@
-from .core import DocliParser
+from .config import ConfigUtil
+from .parse import DocCliParser

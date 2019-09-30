@@ -1,12 +1,10 @@
 # To test run python basic.py --help
 
-from doccli import DocliParser
+from doccli import DocCliParser
 
 class CliTool:
     def __init__(self, _non_cli_param: str, param_a: str, param_b, param_c: int = 5):
-        """command-name
-
-        This is the command description
+        """This is the command description
         
         Args:
             _non_cli_param (str): Underscore leading params aren't included in the
@@ -22,7 +20,7 @@ class CliTool:
         self._non_cli_param = _non_cli_param
 
 
-docliparser = DocliParser(CliTool)
+docliparser = DocCliParser(CliTool)
 parser = docliparser.parser
 
 parser.parse_args()
