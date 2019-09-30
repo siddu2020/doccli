@@ -10,7 +10,7 @@ to generate Argparse objects.
 ## Creating CLI Objects
 
 CLI objects can be created automatically from a class definition, reading in default
-values and descriptions from type hints and the docstring. 
+values and descriptions from type hints and the docstring.
 
 ```python
 from doccli import DocCliParser
@@ -40,21 +40,21 @@ if __name__ == "__main__":
     ...
 ```
 
-See [examples](examples/) for more examples, including how to create CLIs with subcommands.
+See [examples](examples/) for more examples, including how to create CLIs with
+[subcommands](examples/subcommands.py).
 
 ## Config File Helpers
 
 DocCli also provides the `ConfigUtil` class which can be used to automatically
-create Python [configparser](https://docs.python.org/3/library/configparser.html)
-files. This functionality includes:
+create Yaml config files. These include the ability to:
 
-- Inferring config specifications from the `__init__` method
-- Converting an instantiated object into a valid `configparser` dictionary
+- Infer config specifications from the `__init__` method
+- Convert an instantiated object into a dictionary
   - This will ignore config values that have the same value as their default
-- Instantiating a class from an existing CFG file
 - Ability to nest Config objects in other objects, to create centralised config files
+  - A sub-config object can still be instantiated from the super YAML file
 
-Objects inheriting from the `ConfigUtil` class can set the following class level 
+Objects inheriting from the `ConfigUtil` class can set the following class level
 variables:
 
 - config_key: str
@@ -63,18 +63,23 @@ variables:
   - A list of Config Classes that also inherit from ConfigUtil, and are children of this class
 - flatten_sub_configs: bool
   - Defaults to True. When reading from/writing to a dict, sub_configs will either be recorded
-as sub-dictionaries, or at the same level as the config items for the current dictionary.
+    as sub-dictionaries, or at the same level as the config items for the current dictionary.
 
 ## Using them together
 
 These tools can be used together to create a config class that can:
-- Generate a CLI parser 
-- Initiate from a CLI parser, while also filling in unsupplied values from a Config file
 
-DocliParser has the method `parse_args_with_config_file`, which will attempt to 
-fill in any unprovided arguments with values provided in the Config File. Note that 
+- Generate a CLI parser
+- Initiate from a CLI parser, while also filling in unsupplied values from a Config file
+- Write supplied values to a config file so they can be remembered later
+
+DocliParser has the method `parse_args_with_config_file`, which will attempt to
+fill in any unprovided arguments with values provided in the Config File. Note that
 this will only work if:
+
 - The variables are stored as top-level keys in the file
 - The variables are stored in a sub-dictionary under the same key as the subcommand name
-- If the subcommand class inherits from `ConfigUtil` and the variables are stored in a 
-sub-dictionary under the same key as the ConfigUtil.config_key variable
+- If the subcommand class inherits from `ConfigUtil` and the variables are stored in a
+  sub-dictionary under the same key as the ConfigUtil.config_key variable
+
+An example of this can be seen in [examples](examples/webserver_conf.py)

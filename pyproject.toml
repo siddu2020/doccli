@@ -8,7 +8,7 @@ packages = [
 description = "Build Config classes that can be quickly turned into CLI specifications"
 authors = ["mayansalama <micsalama@gmail.com>"]
 readme = "README.md"
-homepage = "https://github.com/mayansalama/doc-cli"
+homepage = "https://github.com/mayansalama/doccli/"
 repository = "https://github.com/mayansalama/doccli"
 
 [tool.poetry.dependencies]
