@@ -23,7 +23,7 @@ class DocCliParser:
         self.spec = spec
 
         self._mainkey = (
-            self.spec["prog"] if not isinstance(cls, ConfigUtil) else cls.config_key
+            self.spec["prog"] if not issubclass(cls, ConfigUtil) else cls.config_key
         )
         self._subcmd_config_map = {}
 
@@ -65,6 +65,9 @@ class DocCliParser:
         config_params = ConfigUtil._get_sub_dict_by_key(self._mainkey, contents)
         if not config_params:
             config_params = contents
+        else:
+            config_params = config_params[self._mainkey]
+
         available_params = self._check_dict_for_params(config_params, params)
         args = self._insert_params_into_argv(args, 0, available_params)
 
@@ -98,6 +101,9 @@ class DocCliParser:
         Args:
             filename (str): Path to YML config file
         """
+        args = sys.argv
+        if args[0] not in self._subcmd_config_map.values():
+            args.pop(0)
         args = self._parse_args_with_config_file(sys.argv, filename)
         return self.parser.parse_args(args)
 
