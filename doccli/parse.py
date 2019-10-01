@@ -103,7 +103,7 @@ class DocCliParser:
             filename (str): Path to YML config file
         """
         args = copy.deepcopy(sys.argv[1:])
-        args = self._parse_args_with_config_file(sys.argv, filename)
+        args = self._parse_args_with_config_file(args, filename)
         return self.parser.parse_args(args)
 
     def add_subcommand(self, cls, func=None):
