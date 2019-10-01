@@ -1,4 +1,5 @@
 import argparse
+import copy
 import inspect
 import logging
 import re
@@ -101,9 +102,7 @@ class DocCliParser:
         Args:
             filename (str): Path to YML config file
         """
-        args = sys.argv
-        if args[0] not in self._subcmd_config_map.values():
-            args.pop(0)
+        args = copy.deepcopy(sys.argv[1:])
         args = self._parse_args_with_config_file(sys.argv, filename)
         return self.parser.parse_args(args)
 
