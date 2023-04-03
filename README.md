@@ -1,6 +1,6 @@
 # DocCli
 
-Python 3.6+ utility to build Classes that can be easily modified to create a Python
+Python 3.10+ utility to build Classes that can be easily modified to create a Python
 Argparse specification. The goal of this is to couple a CLI specification to a config
 class, making them quicker to build and less likely to break.
 

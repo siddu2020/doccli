@@ -1,18 +1,18 @@
 [tool.poetry]
-name = "doc-cli"
-version = "0.0.4"
+name = "sid-doc-cli"
+version = "0.0.5"
 license = "Apache-2.0"
 packages = [
     {include = "doccli"}
 ]
 description = "Build Config classes that can be quickly turned into CLI specifications"
-authors = ["mayansalama <micsalama@gmail.com>"]
+authors = ["siddu2020 <siddartha.k2020@gmail.com>"]
 readme = "README.md"
-homepage = "https://github.com/mayansalama/doccli/"
-repository = "https://github.com/mayansalama/doccli"
+homepage = "https://github.com/siddu2020/doccli/"
+repository = "https://github.com/siddu2020/doccli"
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.10"
 decli = "^0.5.1"
 docstring-parser = "^0.3"
 pyyaml = "^5.1.2"
