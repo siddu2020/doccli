@@ -58,7 +58,7 @@ class ConfigUtil:
         Returns:
             Dict: Sub dictionary
         """
-        if not isinstance(d, collections.Mapping):
+        if not isinstance(d, collections.abc.Mapping):
             return {}
         if k in d:
             return d
